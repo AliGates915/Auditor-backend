@@ -9,8 +9,12 @@ const adminRoutes = require('./routes/adminRoutes');
 // Load environment variables
 dotenv.config();
 
-// Create Express app
-const app = express();
+app.use(cors({
+  origin: 'https://auditor-frontend.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+}));
+
 
 // Enable CORS for all requests
 // app.use(cors({
@@ -26,16 +30,8 @@ const app = express();
 //   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 //   credentials: true, // Allow cookies and auth tokens
 // }));
-app.use((req, res, next) => {
-  res.set({
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "*",
-      "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
-  });
 
-  next();
-});
-// app.use((req, res, next) => {
+app.use((req, res, next) => {
 //   res.header(
 //   'Access-Control-Allow-Origin',
 //   "clientURL"
@@ -45,10 +41,10 @@ app.use((req, res, next) => {
   // res.header("Access-Control-Allow-Credentials", true);
   // res.setHeader( "Access-Control-Allow-Origin", "https://auditor-frontend.vercel.app" );
   
-//   console.log("Request received:", req.method, req.url);
+  console.log("Request received:", req.method, req.url);
   
-//   next();
-//   });
+  next();
+  });
 
 // Middleware to parse JSON
 app.use(express.json());
