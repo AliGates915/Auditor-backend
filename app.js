@@ -14,13 +14,11 @@ const app = express();
 
 // Enable CORS for all requests
 app.use(cors({
-  origin: [
-    'https://auditor-frontend.vercel.app',  // Allow this frontend domain
-    'http://localhost:5173'                 // If testing locally
-  ],
+  origin: 'https://auditor-frontend.vercel.app', // Single origin instead of array
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true, // Allow sending cookies or authentication tokens
+  credentials: true, // Allow cookies and auth tokens
 }));
+
 
 
 // Middleware to parse JSON
@@ -28,6 +26,11 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Server running!');
+});
+
+app.use((req, res, next) => {
+  console.log('Request origin:', req.headers.origin);
+  next();
 });
 
 
