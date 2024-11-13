@@ -14,7 +14,7 @@ const app = express();
 
 // Enable CORS for all requests
 app.use(cors({
-  origin: 'https://auditor-frontend.vercel.app', // Single origin instead of array
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true, // Allow cookies and auth tokens
 }));
