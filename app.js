@@ -13,11 +13,17 @@ dotenv.config();
 const app = express();
 
 // Enable CORS for all requests
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://cert.lpgexpress.com.pk', 'http://localhost:3000'],
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',  // Local development
+    'https://cert.lpgexpress.com.pk', // Production frontend
+    'http://localhost:3000',  // Local development
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
-}));
+  credentials: true, // Allow cookies, authorization headers
+};
+
+app.use(cors(corsOptions));
 
 
 
