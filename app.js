@@ -19,17 +19,8 @@ app.use(cors({
     'http://localhost:5173'                 // If testing locally
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Allow sending cookies or authentication tokens
 }));
-
-app.options('*', cors());  // Handle preflight OPTIONS requests
-
-res.setHeader('Access-Control-Allow-Origin', 'https://auditor-frontend.vercel.app');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-
 
 
 // Middleware to parse JSON
