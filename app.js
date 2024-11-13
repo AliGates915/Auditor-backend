@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: ["https://localhost:5173", "https://auditor-frontend.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: false,
   })
 );
 
