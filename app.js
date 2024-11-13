@@ -19,14 +19,22 @@ const app = express();
 //   credentials: true, // Allow cookies and auth tokens
 // }));
 
-const clientURL = 'https://auditor-frontend.vercel.app';
+// const clientURL = 'https://auditor-frontend.vercel.app';
 
-app.use(cors({
-  origin: clientURL,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true, // Allow cookies and auth tokens
-}));
+// app.use(cors({
+//   origin: clientURL,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   credentials: true, // Allow cookies and auth tokens
+// }));
+app.use((req, res, next) => {
+  res.set({
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "*",
+      "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
+  });
 
+  next();
+});
 // app.use((req, res, next) => {
 //   res.header(
 //   'Access-Control-Allow-Origin',
