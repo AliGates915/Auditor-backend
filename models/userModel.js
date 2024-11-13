@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 // Define schema for file uploads (Logo Picture)
 const fileSchema = new mongoose.Schema({
     filename: {
-        type: String, // Filename should be a string
+        type: String, 
         // required: true,
     },
     path: {

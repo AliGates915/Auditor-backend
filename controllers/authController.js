@@ -60,13 +60,11 @@ exports.signup = async (req, res) => {
         // Create the new user with email and password
         const newUser = await User.create({ 
             email, 
-            password, 
-            mobileNumber: phoneNumber, // Store the mobile number in the main user document
+            password,  // Store the mobile number in the main user document
             userDetails: {             // Embed userDetails directly
                 company,
                 companyEmail,          // Save company email
                 contactPerson,
-                phoneNumber,
                 website,
                 description,
                 designation,
