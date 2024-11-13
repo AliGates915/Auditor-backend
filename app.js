@@ -10,7 +10,7 @@ const adminRoutes = require('./routes/adminRoutes');
 dotenv.config();
 
 const corsOptions ={
-  origin:'*', 
+  origin:['https://auditor-frontend.vercel.app'], 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200,
 }
@@ -34,17 +34,7 @@ app.use(cors(corsOptions))
 // }));
 
 app.use((req, res, next) => {
-//   res.header(
-//   'Access-Control-Allow-Origin',
-//   "clientURL"
-//   );
-  // res.header('Access-Control-Allow-Methods', "GET, POST, PUT, DELETE, OPTIONS");
-  // res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  // res.header("Access-Control-Allow-Credentials", true);
-  // res.setHeader( "Access-Control-Allow-Origin", "https://auditor-frontend.vercel.app" );
-  
   console.log("Request received:", req.method, req.url);
-  
   next();
   });
 
