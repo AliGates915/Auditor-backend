@@ -14,7 +14,7 @@ const app = express();
 
 // Enable CORS for all requests
 app.use(cors({
-  origin: '*',
+  origin: ['http://localhost:5173', 'https://auditor-frontend.vercel.app', 'https://cert.lpgexpress.com.pk'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true, // Allow cookies and auth tokens
 }));
