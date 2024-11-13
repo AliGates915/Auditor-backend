@@ -13,19 +13,21 @@ dotenv.config();
 const app = express();
 
 // Enable CORS for all requests
-const corsOptions = {
+app.use(cors({
   origin: [
-    'http://localhost:5173',  // Local development
-    'https://auditor-frontend.vercel.app', // Production frontend
-    'http://localhost:3000',  // Local development
+    'https://auditor-frontend.vercel.app',  // Allow this frontend domain
+    'http://localhost:5173'                 // If testing locally
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'], // You can add other headers if required
-  credentials: true, // Allow cookies, authorization headers
-  preflightContinue: false, // Ensures the server handles the OPTIONS request
-};
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Allow sending cookies or authentication tokens
+}));
 
-app.use(cors(corsOptions));
+app.options('*', cors());  // Handle preflight OPTIONS requests
+
+res.setHeader('Access-Control-Allow-Origin', 'https://auditor-frontend.vercel.app');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
 
 
