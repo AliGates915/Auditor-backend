@@ -9,13 +9,16 @@ const adminRoutes = require('./routes/adminRoutes');
 // Load environment variables
 dotenv.config();
 
-const corsOptions ={
-  origin:['https://auditor-frontend.vercel.app'], 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
+app.use(
+  cors({
+    origin: ["https://localhost:5173", "https://auditor-frontend.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
-app.use(cors(corsOptions))
+// Handle preflight requests
+app.options("*", cors());
 
 
 // Enable CORS for all requests
