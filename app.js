@@ -13,12 +13,11 @@ dotenv.config();
 const app = express();
 
 // Enable CORS for all requests
-const corsOptions = {
-  origin: 'https://auditor-frontend.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://auditor-frontend.vercel.app', // Single origin instead of array
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // Allow cookies and auth tokens
+}));
 
 
 
