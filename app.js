@@ -14,11 +14,11 @@ const app = express();
 
 // Enable CORS for all requests
 app.use(cors({
-  origin: ['http://localhost:5173',"https://cert.lpgexpress.com.pk", 
-    'http://localhost:3000'], 
+  origin: ['http://localhost:5173', 'https://cert.lpgexpress.com.pk', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
+
 
 
 // Middleware to parse JSON
