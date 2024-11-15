@@ -8,13 +8,14 @@ const app = express();
 
 // Load environment variables
 dotenv.config();
-
-app.use(express.json()); 
 const corsConfig = {
-    credentials: true,
-    origin: true,
+  credentials: true,
+  origin: 'https://auditor-frontend.vercel.app', // Allow only your frontend
 };
-app.use(cors(corsConfig));
+
+app.options('*', cors(corsConfig)); // Handle preflight requests
+
+
 
 // Handle CORS preflight requests
 // app.options('*', cors());
