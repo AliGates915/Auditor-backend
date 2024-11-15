@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel')
 const dotenv=require("dotenv")
+const bcrypt = require('bcryptjs');
+
 dotenv.config()
 console.log(process.env.JWT_SECRET)
 exports.signup = async (req, res) => {
@@ -58,9 +60,10 @@ exports.signup = async (req, res) => {
         }
 
         // Create the new user with email and password
+        const hashedPassword = await bcrypt.hash(password, 12);
         const newUser = await User.create({ 
             email, 
-            password,  // Store the mobile number in the main user document
+            password:hashedPassword,  
             userDetails: {             // Embed userDetails directly
                 company,
                 companyEmail,          // Save company email
@@ -106,7 +109,7 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Find the user by email
+        // Find the user by email and select password
         const user = await User.findOne({ email }).select('+password');
         if (!user) {
             return res.status(401).json({
@@ -116,10 +119,7 @@ exports.login = async (req, res) => {
         }
 
         // Check if the password matches
-        const isPasswordCorrect = userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
-            return await bcrypt.compare(candidatePassword, userPassword);
-        };
-        
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
         if (!isPasswordCorrect) {
             return res.status(401).json({
                 status: 'fail',
