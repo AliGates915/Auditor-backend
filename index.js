@@ -10,13 +10,11 @@ const app = express();
 dotenv.config();
 
 
-app.use(cors({
-  origin: ['https://auditor-frontend.vercel.app/',"https://travel.lpgexpress.com.pk", 
-    'http://localhost:3000'], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+const corsConfig = {
   credentials: true,
-}));
-
+  origin: true,
+};
+app.use(cors(corsConfig));
 
 
 app.use(express.json()); 
