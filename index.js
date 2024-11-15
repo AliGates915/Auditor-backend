@@ -11,14 +11,14 @@ dotenv.config();
 
 app.use(express.json()); 
 
-app.use(cors({
-  origin: "https://auditor-frontend.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+const corsConfig = {
+  credentials: true,
+  origin: true,
+};
+app.use(cors(corsConfig));
 
 // Handle CORS preflight requests
-app.options('*', cors());
+// app.options('*', cors());
 
 // app.use((req, res, next) => {
 //   res.header(
