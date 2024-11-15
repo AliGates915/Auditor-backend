@@ -12,7 +12,7 @@ dotenv.config();
 
 const corsConfig = {
   credentials: true,
-  origin: true,
+  origin: '*',
 };
 app.use(cors(corsConfig));
 
