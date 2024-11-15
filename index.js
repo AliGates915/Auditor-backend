@@ -10,11 +10,12 @@ const app = express();
 dotenv.config();
 
 
-const corsConfig = {
+app.use(cors({
+  origin: ['https://auditor-frontend.vercel.app', 
+    'http://localhost:3000'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
-  origin: true,
-};
-app.use(cors(corsConfig));
+}));
 
 
 app.use(express.json()); 

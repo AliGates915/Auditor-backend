@@ -116,7 +116,10 @@ exports.login = async (req, res) => {
         }
 
         // Check if the password matches
-        const isPasswordCorrect = await user.correctPassword(password, user.password);
+        const isPasswordCorrect = userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
+            return await bcrypt.compare(candidatePassword, userPassword);
+        };
+        
         if (!isPasswordCorrect) {
             return res.status(401).json({
                 status: 'fail',
