@@ -12,7 +12,7 @@ dotenv.config();
 
 const corsConfig = {
   credentials: true,
-  origin: 'https://auditor-frontend.vercel.app',
+  origin: true,
 };
 app.use(cors(corsConfig));
 
