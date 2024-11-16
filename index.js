@@ -10,7 +10,7 @@ const app = express();
 dotenv.config();
 const corsConfig = {
   credentials: true,
-  origin: 'https://auditor-frontend.vercel.app', // Allow only your frontend
+  origin: true, // Allow only your frontend
 };
 
 app.options('*', cors(corsConfig)); // Handle preflight requests
