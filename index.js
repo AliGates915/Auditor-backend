@@ -11,8 +11,7 @@ app.use(express.json());
 dotenv.config();
 
 app.use(cors({
-  origin: ['https://travel-admin-1y7q.vercel.app',"https://travel.lpgexpress.com.pk", 
-    'http://localhost:5173'], 
+  origin: true, 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 }));
