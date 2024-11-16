@@ -11,7 +11,7 @@ app.use(express.json());
 dotenv.config();
 
 app.use(cors({
-  origin: ['https://auditor-frontend.vercel.app/',"https://cert.lpgexpress.com.pk", 
+  origin: ['https://auditor-frontend.vercel.app',"https://cert.lpgexpress.com.pk", 
     'http://localhost:5173'], 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
