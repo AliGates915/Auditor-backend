@@ -96,6 +96,8 @@ exports.signup = async (req, res) => {
         });
     }
 };
+
+
 //Login Controller
 exports.login = async (req, res) => {
     try {

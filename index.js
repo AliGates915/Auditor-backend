@@ -4,10 +4,20 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const app = express();
 
+const app = express()
+app.use(express.json());
 // Load environment variables
 dotenv.config();
+
+app.use(cors({
+  origin: ['https://travel-admin-1y7q.vercel.app',"https://travel.lpgexpress.com.pk", 
+    'http://localhost:5173'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
+}));
+
+
 // const corsConfig = {
 //   credentials: true,
 //   origin: true, // Allow only your frontend
@@ -16,19 +26,19 @@ dotenv.config();
 // app.options('*', cors(corsConfig)); // Handle preflight requests
 
 
-app.use((req, res, next) => {
-  res.header(
-  'Access-Control-Allow-Origin',
-  "https://auditor-frontend.vercel.app"
-  );
-  res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", true);
+// app.use((req, res, next) => {
+//   res.header(
+//   'Access-Control-Allow-Origin',
+//   "https://auditor-frontend.vercel.app"
+//   );
+//   res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   res.header("Access-Control-Allow-Credentials", true);
   
-  console.log("Request received:", req.method, req.url);
+//   console.log("Request received:", req.method, req.url);
   
-  next();
-  });
+//   next();
+//   });
 
 
 app.get('/', (req, res) => {
