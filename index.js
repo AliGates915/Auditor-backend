@@ -8,31 +8,27 @@ const app = express();
 
 // Load environment variables
 dotenv.config();
-const corsConfig = {
-  credentials: true,
-  origin: true, // Allow only your frontend
-};
+// const corsConfig = {
+//   credentials: true,
+//   origin: true, // Allow only your frontend
+// };
 
-app.options('*', cors(corsConfig)); // Handle preflight requests
+// app.options('*', cors(corsConfig)); // Handle preflight requests
 
 
-
-// Handle CORS preflight requests
-// app.options('*', cors());
-
-// app.use((req, res, next) => {
-//   res.header(
-//   'Access-Control-Allow-Origin',
-//   "https://auditor-frontend.vercel.app"
-//   );
-//   res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS');
-//   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   res.header("Access-Control-Allow-Credentials", true);
+app.use((req, res, next) => {
+  res.header(
+  'Access-Control-Allow-Origin',
+  "https://auditor-frontend.vercel.app"
+  );
+  res.header("Access-Control-Allow-Methods", 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", true);
   
-//   console.log("Request received:", req.method, req.url);
+  console.log("Request received:", req.method, req.url);
   
-//   next();
-//   });
+  next();
+  });
 
 
 app.get('/', (req, res) => {
