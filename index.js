@@ -10,20 +10,20 @@ app.use(express.json());
 // Load environment variables
 dotenv.config();
 
-// app.use(cors({
-//   origin: ['https://auditor-frontend.vercel.app/',"https://cert.lpgexpress.com.pk", 
-//     'http://localhost:5173'], 
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   credentials: true,
-// }));
-
-
-const corsConfig = {
+app.use(cors({
+  origin: ['https://auditor-frontend.vercel.app/',"https://cert.lpgexpress.com.pk", 
+    'http://localhost:5173'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
-  origin: true, // Allow only your frontend
-};
+}));
 
-app.options('*', cors(corsConfig)); // Handle preflight requests
+
+// const corsConfig = {
+//   credentials: true,
+//   origin: true, // Allow only your frontend
+// };
+
+// app.options('*', cors(corsConfig)); // Handle preflight requests
 
 
 // app.use((req, res, next) => {
