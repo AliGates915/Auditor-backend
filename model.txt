@@ -1,0 +1,9 @@
+In CRUD of Vehicles 
+We have 
+
+API to get All Car Types
+API to get All Car Models
+API to get All Colors
+API to get All Transmission Types
+API to get All Fuel Types
+API to get All Additional features of vehicle

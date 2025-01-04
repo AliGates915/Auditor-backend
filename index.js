@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const vehicleRoutes = require('./routes/vehicle.routes')
+
 
 const app = express()
 app.use(express.json());
@@ -51,10 +53,11 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
+app.use('/vehicle', vehicleRoutes)
 
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGOO_URI, {
+  .connect("mongodb://127.0.0.1:27017/rentcar", {
   
   })
   .then(() => console.log('DB connection successful'))
