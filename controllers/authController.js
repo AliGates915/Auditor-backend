@@ -5,6 +5,9 @@ const bcrypt = require('bcryptjs');
 
 dotenv.config()
 console.log(process.env.JWT_SECRET)
+
+
+//! SIGNUP
 exports.signup = async (req, res) => {
     try {
         const { 
@@ -98,7 +101,7 @@ exports.signup = async (req, res) => {
 };
 
 
-//Login Controller
+//! Login Controller
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
